@@ -1,11 +1,9 @@
-'use strict';
-
 var nameVar = 'Manjit';
 var nameVar = 'Sandesh';
 console.log('nameVar', nameVar);
 
 // ES6 Redefining a variable is not valid reassigning is valid using let
-var nameLet = 'Kushal';
+let nameLet = 'Kushal';
 nameLet = 'Sanjeev';
 console.log('nameLet', nameLet);
 
@@ -35,11 +33,11 @@ console.log('nameLet', nameLet);
 // getPetname();
 // console.log(petname);
 
-function getPetname() {
+function getPetname(){
     var petname = 'Hal';
     return petname;
 }
-var nameConst = getPetname();
+const nameConst = getPetname();
 console.log(nameConst);
 
 //Block Scoping
@@ -72,10 +70,10 @@ console.log(nameConst);
 
 // console.log(firstName);
 
-var fullname = 'Manjit Shakya';
-var firstName = void 0;
+const fullname = 'Manjit Shakya';
+let firstName
 
-if (fullname) {
+if (fullname){
     firstName = fullname.split(' ')[0];
     console.log(firstName);
 }
