@@ -1,83 +1,83 @@
 'use strict';
 
-var nameVar = 'Manjit';
-var nameVar = 'Sandesh';
-console.log('nameVar', nameVar);
+console.log("App.js is running!");
 
-// ES6 Redefining a variable is not valid reassigning is valid using let
-var nameLet = 'Kushal';
-nameLet = 'Sanjeev';
-console.log('nameLet', nameLet);
+// JSX - JavaScript XML
+var appObj = {
+    title: 'This is the One',
+    subTitle: 'I am subtitle',
+    options: ['One', 'Two']
+};
+var template = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        appObj.title
+    ),
+    appObj.subTitle && React.createElement(
+        'p',
+        null,
+        appObj.subTitle
+    ),
+    React.createElement(
+        'p',
+        null,
+        appObj.options.length > 0 ? 'Here are your options' : 'No Options'
+    ),
+    React.createElement(
+        'ol',
+        null,
+        React.createElement(
+            'li',
+            null,
+            'Item one'
+        ),
+        React.createElement(
+            'li',
+            null,
+            'Item two'
+        )
+    )
+);
+var appRoot = document.getElementById('app');
+ReactDOM.render(template, appRoot);
 
-// ES6 Redefining a variable is not valid reassigning is not valid using const
-// const nameConst = 'Frank';
-// nameConst = 'Frank';
-// console.log('nameConst', nameConst);
+var user = {
+    name: 'Andrew',
+    age: 20,
+    location: 'Philadhelphia'
+};
 
-// function getPetname(){
-//     var petname = 'Hal';
-//     return petname;
-// }
-// getPetname();
-// console.log(petname);
-
-// function getPetname(){
-//     let petname = 'Hal';
-//     return petname;
-// }
-// getPetname();
-// console.log(petname);
-
-// function getPetname(){
-//     const petname = 'Hal';
-//     return petname;
-// }
-// getPetname();
-// console.log(petname);
-
-function getPetname() {
-    var petname = 'Hal';
-    return petname;
-}
-var nameConst = getPetname();
-console.log(nameConst);
-
-//Block Scoping
-// Let and Const are block level scope
-
-// var fullname = 'Manjit Shakya';
-
-// if (fullname){
-//     var firstName = fullname.split(' ')[0];
-//     console.log(firstName);
-// }
-
-// console.log(firstName);
-
-// var fullname = 'Manjit Shakya';
-
-// if (fullname){
-//     const firstName = fullname.split(' ')[0];
-//     console.log(firstName);
-// }
-
-// console.log(firstName);
-
-// var fullname = 'Manjit Shakya';
-
-// if (fullname){
-//     let firstName = fullname.split(' ')[0];
-//     console.log(firstName);
-// }
-
-// console.log(firstName);
-
-var fullname = 'Manjit Shakya';
-var firstName = void 0;
-
-if (fullname) {
-    firstName = fullname.split(' ')[0];
-    console.log(firstName);
+function getLocation(location) {
+    if (location) {
+        return React.createElement(
+            'p',
+            null,
+            'Location: ',
+            location
+        );
+    }
 }
 
-console.log(firstName);
+var template2 = React.createElement(
+    'div',
+    null,
+    React.createElement(
+        'h1',
+        null,
+        user.name ? user.name : 'Anonymous'
+    ),
+    user.age && user.age >= 18 && React.createElement(
+        'p',
+        null,
+        'Age: ',
+        user.age
+    ),
+    getLocation(user.location)
+);
+
+var app2Root = document.getElementById('app2');
+
+ReactDOM.render(template2, app2Root);
