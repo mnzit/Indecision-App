@@ -67,7 +67,16 @@ ReactDOM.render(template, appRoot);
 // const app2Root = document.getElementById('app2');
 // ReactDOM.render(template2,app2Root);
 var count = 0;
-var someId = 'myidhere';
+// const someId = 'myidhere'
+var addOne = function addOne() {
+    console.log('AddOne');
+};
+var minusOne = function minusOne() {
+    console.log('MinusOne');
+};
+var reset = function reset() {
+    console.log('Reset');
+};
 var templateTwo = React.createElement(
     'div',
     null,
@@ -79,8 +88,18 @@ var templateTwo = React.createElement(
     ),
     React.createElement(
         'button',
-        { id: someId, className: 'button' },
+        { onClick: addOne },
         '+1'
+    ),
+    React.createElement(
+        'button',
+        { onClick: minusOne },
+        '-1'
+    ),
+    React.createElement(
+        'button',
+        { onClick: reset },
+        'reset'
     )
 );
 
