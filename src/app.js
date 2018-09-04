@@ -4,21 +4,49 @@ console.log("App.js is running!");
 const appObj = {
     title: 'This is the One',
     subTitle: 'I am subtitle',
-    options: ['One', 'Two']
+    options: []
 };
-const template = (
-<div>
-    <h1>{appObj.title}</h1>
-    {appObj.subTitle && <p>{appObj.subTitle}</p>}
-    <p>{appObj.options.length > 0 ? 'Here are your options' : 'No Options'}</p>
-    <ol>
-    <li>Item one</li>
-    <li>Item two</li>
-    </ol>
-</div>
-);
+
+const removeAll = () =>{
+    appObj.options = [];
+    render();
+};
+const onFormSubmit = (e) => {
+    e.preventDefault();
+    const option = e.target.elements.option.value;
+    if(option){
+        appObj.options.push(option);
+        e.target.elements.option.value='';
+        render();
+    }
+
+};
+
 const appRoot = document.getElementById('app');
-ReactDOM.render(template, appRoot);
+
+
+const render = () => {
+    const template = (
+        <div>
+            <h1>{appObj.title}</h1>
+            {appObj.subTitle && <p>{appObj.subTitle}</p>}
+            <p>{appObj.options.length > 0 ? 'Here are your options' : 'No Options'}</p>
+            <p>{appObj.options.length}</p>
+            <button onClick={removeAll}>Remove all</button>
+            <ol>
+            <li>Item one</li>
+            <li>Item two</li>
+            </ol>
+            <form onSubmit={onFormSubmit}>
+            <input type="text" name="option"/>
+            <button>Add Option</button>
+            </form>
+        </div>
+        );
+        ReactDOM.render(template, appRoot);
+};
+
+render();
 
 // const user={
 //     name: 'Andrew',
@@ -42,36 +70,6 @@ ReactDOM.render(template, appRoot);
 
 // const app2Root = document.getElementById('app2');
 // ReactDOM.render(template2,app2Root);
-let count = 0;
-// const someId = 'myidhere'
-const addOne = () => {
-    count++;
-    // console.log('AddOne')
-    renderCounterApp()
-}
-const minusOne = () => {
-    count--;
-    // console.log('MinusOne');
-    renderCounterApp()
-}
-const reset = () => {
-    count = 0;
-    // console.log('Reset');
-    renderCounterApp()
-}
 
-const app2Root = document.getElementById('app2');
 
-const renderCounterApp = () => {
-    const templateTwo = (
-        <div>
-        <h1>Count: {count}</h1>
-        <button onClick={addOne}>+1</button>
-        <button onClick={minusOne}>-1</button>
-        <button onClick={reset}>reset</button>
-        </div>
-        );
-        ReactDOM.render(templateTwo,app2Root);
-};
 
-renderCounterApp();
