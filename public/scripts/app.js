@@ -1,83 +1,25 @@
-'use strict';
+"use strict";
 
-console.log("App.js is running!");
+// const square = function(x){
+// return x * x;
+// }
 
-// JSX - JavaScript XML
-var appObj = {
-    title: 'This is the One',
-    subTitle: 'I am subtitle',
-    options: ['One', 'Two']
-};
-var template = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        appObj.title
-    ),
-    appObj.subTitle && React.createElement(
-        'p',
-        null,
-        appObj.subTitle
-    ),
-    React.createElement(
-        'p',
-        null,
-        appObj.options.length > 0 ? 'Here are your options' : 'No Options'
-    ),
-    React.createElement(
-        'ol',
-        null,
-        React.createElement(
-            'li',
-            null,
-            'Item one'
-        ),
-        React.createElement(
-            'li',
-            null,
-            'Item two'
-        )
-    )
-);
-var appRoot = document.getElementById('app');
-ReactDOM.render(template, appRoot);
+// const squareArrow = (x) => {
+// return x * x;
+// };
 
-var user = {
-    name: 'Andrew',
-    age: 20,
-    location: 'Philadhelphia'
+// const squareArrow = x => x * x;
+
+// console.log(squareArrow(8));
+
+
+var getFirstNameRegular = function getFirstNameRegular(fname) {
+    return fname.split(" ")[0];
 };
 
-function getLocation(location) {
-    if (location) {
-        return React.createElement(
-            'p',
-            null,
-            'Location: ',
-            location
-        );
-    }
-}
+var getFirstNameShortHand = function getFirstNameShortHand(fname) {
+    return fname.split(" ")[0];
+};
 
-var template2 = React.createElement(
-    'div',
-    null,
-    React.createElement(
-        'h1',
-        null,
-        user.name ? user.name : 'Anonymous'
-    ),
-    user.age && user.age >= 18 && React.createElement(
-        'p',
-        null,
-        'Age: ',
-        user.age
-    ),
-    getLocation(user.location)
-);
-
-var app2Root = document.getElementById('app2');
-
-ReactDOM.render(template2, app2Root);
+console.log(getFirstNameRegular("Manjit Shakya"));
+console.log(getFirstNameShortHand("Mike Shakya"));
