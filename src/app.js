@@ -17,29 +17,41 @@ const template = (
     </ol>
 </div>
 );
-var appRoot = document.getElementById('app');
+const appRoot = document.getElementById('app');
 ReactDOM.render(template, appRoot);
 
-const user={
-    name: 'Andrew',
-    age: 20,
-    location: 'Philadhelphia'
-}
+// const user={
+//     name: 'Andrew',
+//     age: 20,
+//     location: 'Philadhelphia'
+// }
 
-function getLocation(location){
-    if(location){
-        return <p>Location: {location}</p>;
-    }
-}
+// function getLocation(location){
+//     if(location){
+//         return <p>Location: {location}</p>;
+//     }
+// }
 
-const template2 = (
-    <div>
-    <h1>{user.name ? user.name : 'Anonymous'}</h1>
-    {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}   
-    {getLocation(user.location)}
-    </div>
+// const template2 = (
+//     <div>
+//     <h1>{user.name ? user.name : 'Anonymous'}</h1>
+//     {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}   
+//     {getLocation(user.location)}
+//     </div>
+// );
+
+// const app2Root = document.getElementById('app2');
+// ReactDOM.render(template2,app2Root);
+let count = 0;
+const someId = 'myidhere'
+const templateTwo = (
+<div>
+<h1>Count: {count}</h1>
+<button id={someId} className="button">+1</button>
+</div>
 );
 
-const app2Root = document.getElementById('app2');
+console.log(templateTwo);
 
-ReactDOM.render(template2,app2Root);
+const app2Root = document.getElementById('app2');
+ReactDOM.render(templateTwo,app2Root);
