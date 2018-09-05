@@ -18,8 +18,7 @@ const onFormSubmit = (e) => {
         appObj.options.push(option);
         e.target.elements.option.value='';
         render();
-    }
-
+    } 
 };
 
 const appRoot = document.getElementById('app');
