@@ -1,120 +1,39 @@
 'use strict';
 
-console.log("App.js is running!");
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-// JSX - JavaScript XML
-var appObj = {
-    title: 'This is the One',
-    subTitle: 'I am subtitle',
-    options: []
-};
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-var removeAll = function removeAll() {
-    appObj.options = [];
-    render();
-};
-var onFormSubmit = function onFormSubmit(e) {
-    e.preventDefault();
-    var option = e.target.elements.option.value;
-    if (option) {
-        appObj.options.push(option);
-        e.target.elements.option.value = '';
-        render();
+var Person = function () {
+    function Person() {
+        var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Anonymous';
+        var age = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
+
+        _classCallCheck(this, Person);
+
+        this.name = name;
+        this.age = age;
     }
-};
-var onMakeDecision = function onMakeDecision() {
-    var randomNum = Math.floor(Math.random() * appObj.options.length);
-    var option = appObj.options[randomNum];
-    alert(option);
-};
 
-var appRoot = document.getElementById('app');
+    _createClass(Person, [{
+        key: 'getGreeting',
+        value: function getGreeting() {
+            return 'Hi, I am ' + this.name + '!';
+        }
+    }, {
+        key: 'getDescription',
+        value: function getDescription() {
+            return this.name + ' is ' + this.age + ' year(s) old';
+        }
+    }]);
 
-var number = [55, 101, 1000];
+    return Person;
+}();
 
-var render = function render() {
-    var template = React.createElement(
-        'div',
-        null,
-        React.createElement(
-            'h1',
-            null,
-            appObj.title
-        ),
-        appObj.subTitle && React.createElement(
-            'p',
-            null,
-            appObj.subTitle
-        ),
-        React.createElement(
-            'p',
-            null,
-            appObj.options.length > 0 ? 'Here are your options' : 'No Options'
-        ),
-        React.createElement(
-            'button',
-            { disabled: appObj.options.length === 0, onClick: onMakeDecision },
-            'What should I do'
-        ),
-        React.createElement(
-            'button',
-            { onClick: removeAll },
-            'Remove all'
-        ),
-        number.map(function (number) {
-            return React.createElement(
-                'p',
-                { key: number },
-                'Number: ',
-                number
-            );
-        }),
-        React.createElement(
-            'ol',
-            null,
-            appObj.options.map(function (items) {
-                return React.createElement(
-                    'li',
-                    { key: items },
-                    items
-                );
-            })
-        ),
-        React.createElement(
-            'form',
-            { onSubmit: onFormSubmit },
-            React.createElement('input', { type: 'text', name: 'option' }),
-            React.createElement(
-                'button',
-                null,
-                'Add Option'
-            )
-        )
-    );
-    ReactDOM.render(template, appRoot);
-};
+var me = new Person('Manjit Shakya', 20);
+console.log(me.getGreeting());
+console.log(me.getDescription());
 
-render();
-
-// const user={
-//     name: 'Andrew',
-//     age: 20,
-//     location: 'Philadhelphia'
-// }
-
-// function getLocation(location){
-//     if(location){
-//         return <p>Location: {location}</p>;
-//     }
-// }
-
-// const template2 = (
-//     <div>
-//     <h1>{user.name ? user.name : 'Anonymous'}</h1>
-//     {(user.age && user.age >= 18) && <p>Age: {user.age}</p>}   
-//     {getLocation(user.location)}
-//     </div>
-// );
-
-// const app2Root = document.getElementById('app2');
-// ReactDOM.render(template2,app2Root);
+var other = new Person();
+console.log(other.getGreeting());
+console.log(other.getDescription());
