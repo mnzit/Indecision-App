@@ -7,16 +7,29 @@ class IndecisionApp extends React.Component {
         this.handleAddOption = this.handleAddOption.bind(this);
         this.handleDeleteOption = this.handleDeleteOption.bind(this);
         this.state={
-            options:props.options
+            options:[]
         };
     }
 
     componentDidMount(){
-        console.log('Fetching data !');
+        try{
+            const json = localStorage.getItem('options');
+            const options = JSON.parse(json);
+            if(options){
+                this.setState(() => ({options: options}));
+            }
+        }catch (e){
+            // Do nothing
+        }
+      
     }
 
     componentDidUpdate(prevProps, prevState){
-        console.log('Saving data !');
+        if(prevState.options.length !== this.state.options.length){
+            const json = JSON.stringify(this.state.options);
+            localStorage.setItem('options', json);
+        }
+        
     }
         
     componentWillUnmount(){
@@ -64,10 +77,6 @@ class IndecisionApp extends React.Component {
             </div>
         );
     }
-}
-
-IndecisionApp.defaultProps = {
-    options: []
 }
 
 const Header = (props) => {
@@ -139,7 +148,10 @@ class AddOption extends React.Component {
         e.preventDefault();
         let value = e.target.elements.option.value.trim();
         const error =  this.props.handleAddOption(value);
-        this.setState(() => ({error}));      
+        this.setState(() => ({error}));   
+        if(!error) {
+            e.target.elements.option.value = ''; 
+        }  
     }
     render() {
         return(
